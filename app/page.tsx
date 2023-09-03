@@ -15,7 +15,8 @@ const WinningCombos = [
 ];
 
 export default function Home() {
-  const [cells, setCells] = useState(["", "", "", "", "", "", "", "", ""]);
+  const initialArray = ["", "", "", "", "", "", "", "", ""];
+  const [cells, setCells] = useState(initialArray);
   const [go, setGo] = useState("circle");
   const [winningMessage, setWinningMessage] = useState("");
 
@@ -54,24 +55,32 @@ export default function Home() {
           />
         ))}
       </div>
-      <div>{winningMessage}</div>
+      <div
+        style={{
+          marginTop: "20px",
+          fontSize: "24px",
+          color: "#f8d221",
+        }}
+      >
+        {winningMessage}
+      </div>
       {!winningMessage && (
-        <div style={{ marginTop: "20px" }}>
-          its now
+        <div style={{ marginTop: "20px", color: "#f8d221", fontSize: "24px" }}>
+          Its now{" "}
           <span
             style={{
-              color: go === "circle" ? "blue" : "red",
-              fontSize: "32px",
-              fontWeight: "bolder",
-              display: "inline-block",
-              margin: "0 3px",
+              textTransform: "capitalize",
             }}
           >
             {go}
-          </span>
+          </span>{" "}
           turn!
         </div>
       )}
+
+      <p style={{ color: "#f8d221", fontSize: "24px", marginTop: "4rem" }}>
+        Reload to start a new game!
+      </p>
     </main>
   );
 }
