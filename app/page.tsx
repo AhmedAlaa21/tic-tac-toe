@@ -30,7 +30,13 @@ export default function Home() {
         setWinningMessage("Cross Wins");
       }
     });
-  }, cells);
+  }, [cells, winningMessage]);
+
+  useEffect(() => {
+    if (cells.every((cell) => cell !== "") && !winningMessage) {
+      setWinningMessage("Draw!");
+    }
+  }, [cells, winningMessage]);
 
   return (
     <main className="container">
